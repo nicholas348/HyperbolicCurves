@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70111069-fb58-4acb-99d7-3f43d9aa0e2e" name="Changes" comment=" added the scene before showing the hyperbolic geometry and constructed file for hyperbolic plate mobject">
-      <change afterPath="$PROJECT_DIR$/mobjects/optics.py" afterDir="false" />
+    <list default="true" id="70111069-fb58-4acb-99d7-3f43d9aa0e2e" name="Changes" comment="added the light and">
+      <change afterPath="$PROJECT_DIR$/tess_5_4.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobjects/hyperbolic_plate.py" beforeDir="false" afterPath="$PROJECT_DIR$/util_functions/optics_reflections.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,13 +164,22 @@
       <option name="project" value="LOCAL" />
       <updated>1770901950289</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added the light and">
+      <option name="closed" value="true" />
+      <created>1771117902380</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1771117902380</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="original project" />
     <MESSAGE value=" added the scene before showing the hyperbolic geometry and constructed file for hyperbolic plate mobject" />
-    <option name="LAST_COMMIT_MESSAGE" value=" added the scene before showing the hyperbolic geometry and constructed file for hyperbolic plate mobject" />
+    <MESSAGE value="added the light and" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the light and" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

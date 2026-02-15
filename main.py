@@ -1,6 +1,5 @@
-import numpy as np
+
 from manim import *
-from numpy import tan
 
 from util_functions.optics_reflections import intersection
 
@@ -15,9 +14,14 @@ class HyperbolicCurves(Scene):
         introducing hyperbolic curves
         '''
         #showing the hyperbolic curves
-        self.play(Create(plane))
+
         x_coord = ValueTracker(1)
         y_coord=ValueTracker(1)
+        initial_formula = MathTex("x^2+y^2=1")
+        self.play(Write(initial_formula))
+        self.wait(1)
+        self.play(initial_formula.animate.shift(UP*2))
+
         formula = always_redraw(
             lambda:
             MathTex(
@@ -34,7 +38,15 @@ class HyperbolicCurves(Scene):
 
         #adjusting the value of a and b
         )
-        self.play(Create(formula),Create(hyperbolic_graph))
+        static_formula = MathTex(
+            fr"1.00x^2+1.00y^2=1"
+        ).shift(UP*2)
+        self.play(Create(plane),Create(hyperbolic_graph))
+        self.wait(1)
+        self.play(Transform(initial_formula, static_formula))
+        self.remove(initial_formula)
+        self.add((formula))
+        self.wait(1)
         self.play(
             x_coord.animate.set_value(0.5),
             y_coord.animate.set_value(1.3)
@@ -48,8 +60,8 @@ class HyperbolicCurves(Scene):
         self.wait(1)
 
         self.play(
-            x_coord.animate.set_value(0.6),
-            y_coord.animate.set_value(0.6),run_time=2
+            x_coord.animate.set_value(0.2),
+            y_coord.animate.set_value(0.2),run_time=2
         )
         self.wait(1)
         self.play(
@@ -149,15 +161,17 @@ class HyperbolicCurves(Scene):
                 )/(3*parameter.get_value())
             )
         )
+        hyperbolic_graph_blue = ImplicitFunction(
+                lambda x, y:   x ** 2 - y ** 2 - 1
+            ).set_color(BLUE)
+
 
         self.play(
             FadeOut(plane),
             FadeIn(axes),
             ReplacementTransform(
                 hyperbolic_graph,
-                ImplicitFunction(
-                lambda x, y: x_coord.get_value() * x ** 2 + y_coord.get_value() * y ** 2 - 1
-            ).set_color(BLUE)
+                hyperbolic_graph_blue
             )
         )
         self.wait(1)
@@ -183,7 +197,13 @@ class HyperbolicCurves(Scene):
         ).arrange(DOWN).shift(UP*2+RIGHT*5)
         self.play(Create(hyp_formula))
         self.wait(2)
-        self.play(FadeOut(hyp_formula))
+        self.play(
+            FadeOut(hyp_formula),
+            FadeOut(lines_for_hyperbolic_functions),
+            FadeOut(area),
+            FadeOut(dot)
+        )
+
 
 
         """
@@ -250,10 +270,30 @@ class HyperbolicCurves(Scene):
                     )
                     for i in range(len(theoretical_light))
                 ],
-                lag_ratio=0.2  # Adjust this to control the delay between each pair
+                lag_ratio=0.1  # Adjust this to control the delay between each pair
             )
         )
         self.wait(2)
+        self.play(
+            FadeOut(real_light),
+            FadeOut(reflected_light),
+            FadeOut(theoretical_light),
+            FadeOut(axes),
+            FadeOut(foci1),
+            FadeOut(foci2),
+            hyperbolic_graph_blue.animate.shift(LEFT*3)
+        )
+        hyper_tesselation = ImageMobject("tess_5_4.gif").scale(2).shift(RIGHT*3)
+        hyper_explain = Text("双曲几何").next_to(hyper_tesselation, DOWN)
+
+        self.play(
+            FadeIn(hyper_tesselation),
+            FadeIn(hyper_explain),
+        )
+        self.wait(10)
+
+
+
 
 
 
